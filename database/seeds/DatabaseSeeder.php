@@ -21,7 +21,6 @@ class DatabaseSeeder extends Seeder
 
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
 
-
         // $this->call(UsersTableSeeder::class);
 
         // to be sure that every time the seeding or the DatabaseSeeder is executed, we restart the database to the original status, we are going to empty all the tables and we can do that by using the truncate method in every one of our models or tables.
@@ -32,7 +31,7 @@ class DatabaseSeeder extends Seeder
         DB::table('category_product')->truncate(); //pivot table
 
         // defined how much eusers , categories , products & transactions we are going to create,
-        $usersQuantity = 200;
+        $usersQuantity = 1000;
         $categoriesQuantity = 30;
         $productsQuantity = 1000;
         $transactionsQuantity = 100;
