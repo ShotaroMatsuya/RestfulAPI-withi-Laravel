@@ -50,6 +50,23 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    //defined mutator which modify an  attribute before inserting record.
+    public function setNameAttribute($name)
+    {
+        //全部小文字
+        $this->attributes['name'] = strtolower($name);
+    }
+    //defined accessor which modify an attribute after fetching record.
+    public function getNameAttribute($name)
+    {
+        //最初だけ大文字
+        return ucwords($name);
+    }
+    public function setEmailAttribute($email)
+    {
+        $this->attributes['email'] = strtolower($email);
+    }
+
     public function isVerified()
     {
         return $this->verified == User::VERIFIED_USER;
