@@ -24,6 +24,8 @@ class CreateProductsTable extends Migration
             $table->bigInteger('seller_id')->unsigned();
             $table->timestamps();
 
+            $table->softDeletes(); //'deleted_at'が追加される
+
             $table->foreign('seller_id')->references('id')->on('users');
         });
     }
