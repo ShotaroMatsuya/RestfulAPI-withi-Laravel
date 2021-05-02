@@ -30,6 +30,12 @@ class DatabaseSeeder extends Seeder
         Transaction::truncate();
         DB::table('category_product')->truncate(); //pivot table
 
+        //seed中はmail転送を中断する
+        User::flushEventListeners();
+        Category::flushEventListeners();
+        Product::flushEventListeners();
+        Transaction::flushEventListeners();
+
         // defined how much eusers , categories , products & transactions we are going to create,
         $usersQuantity = 1000;
         $categoriesQuantity = 30;

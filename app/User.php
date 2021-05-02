@@ -43,7 +43,9 @@ class User extends Authenticatable
      */
     //JSONオブジェクトをresponseとして返すときに見せたくないattributeをここにセットする
     protected $hidden = [
-        'password', 'remember_token', 'verification_token'
+        'password',
+        'remember_token',
+        'verification_token'
     ];
 
     /**

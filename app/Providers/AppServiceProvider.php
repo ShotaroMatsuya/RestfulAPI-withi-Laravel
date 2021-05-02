@@ -2,7 +2,11 @@
 
 namespace App\Providers;
 
+use App\User;
 use App\Product;
+use App\Mail\UserCreated;
+use App\Mail\UserMailChanged;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -26,6 +30,20 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {   //utf8mb4は1020 characters まで対応しているがmysqlは767なので以下を記述することでエラーを避けることができる
         Schema::defaultStringLength(191);
+
+        User::created(function ($user) {
+            retry(5, function () use ($user) {
+                Mail::to($user)->send(new UserCreated($user)); //userインスタンスを渡すとautomaticallyにemail attributeを抽出
+            }, 100);
+        });
+
+        User::updated(function ($user) {
+            if ($user->isDirty('email')) { //email attributeが更新された場合のみ送信（自動的にunverifiedになる）
+                retry(5, function () use ($user) {
+                    Mail::to($user)->send(new UserMailChanged($user));
+                }, 100);
+            }
+        });
 
         Product::updated(function ($product) {
             if ($product->quantity == 0 && $product->isAvailable()) {
