@@ -5,6 +5,7 @@ namespace App;
 use App\Buyer;
 use App\Product;
 use Illuminate\Database\Eloquent\Model;
+use App\Transformers\TransactionTransFormer;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Transaction extends Model
@@ -12,6 +13,9 @@ class Transaction extends Model
     //softDeleteの追加
     use SoftDeletes;
     protected $dates = ['deleted_at'];
+    //transformerの実装
+    public $transformer = TransactionTransFormer::class;
+
 
     protected $fillable = [
         'quantity',

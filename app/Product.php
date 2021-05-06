@@ -6,6 +6,7 @@ use App\Seller;
 use App\Category;
 use App\Transaction;
 use Illuminate\Database\Eloquent\Model;
+use App\Transformers\ProductTransFormer;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model
@@ -13,6 +14,10 @@ class Product extends Model
     //softDeleteの追加
     use SoftDeletes;
     protected $dates = ['deleted_at'];
+
+    //transformerの実装
+    public $transformer = ProductTransFormer::class;
+
 
     const AVAILABLE_PRODUCT = 'available';
     const UNAVAILABLE_PRODUCT = 'unavailable';

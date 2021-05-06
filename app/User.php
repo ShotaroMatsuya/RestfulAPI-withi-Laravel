@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Support\Str;
+use App\Transformers\UserTransFormer;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -15,6 +16,9 @@ class User extends Authenticatable
     //softDeleteの追加
     use SoftDeletes;
     protected $dates = ['deleted_at'];
+
+    //transformerの実装
+    public $transformer = UserTransFormer::class;
 
     const VERIFIED_USER = '1';
     const UNVERIFIED_USER = '0';

@@ -165,6 +165,8 @@ return [
         /*
          * Package Service Providers...
          */
+        //data formatting library
+        Spatie\Fractal\FractalServiceProvider::class,
 
         /*
          * Application Service Providers...
