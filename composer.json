@@ -14,12 +14,12 @@
         "laravel/framework": "^6.20",
         "laravel/homestead": "^10.0.",
         "laravel/tinker": "^2.5",
-        "laravel/ui": "1.*",
         "spatie/laravel-fractal": "^5.8"
     },
     "require-dev": {
         "facade/ignition": "^1.16.4",
         "fakerphp/faker": "^1.9.1",
+        "laravel/ui": "1.*",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",
         "phpunit/phpunit": "^8.5.8|^9.3.3"
