@@ -9,4 +9,8 @@ class ApiController extends Controller
 {
     //we can use every method in the ApiResponser directly in our controller
     use ApiResponser;
+
+    public function __construct()
+    {
+    }
 }

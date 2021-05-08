@@ -19,7 +19,7 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrustProxies::class,
         \App\Http\Middleware\CheckForMaintenanceMode::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
-        \App\Http\Middleware\TrimStrings::class,
+        \App\Http\Middleware\TrimStrings::class, //すべてのリクエストに適応
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
     ];
 
@@ -30,7 +30,8 @@ class Kernel extends HttpKernel
      */
 
 
-    //  middleareにparameter渡したいときはname middlwareとしてregisterする必要がある
+    // middleware groupに登録されたものはrouteにrouteServiceProviderによりrouteに紐付かれている
+    //  middlewareにparameter渡したいときはname middlewareとしてregisterする必要がある
     protected $middlewareGroups = [
         'web' => [
             'signature:X-Application-Name',
@@ -68,7 +69,8 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'signature' => \App\Http\Middleware\SignatureMiddleware::class,
+        'signature' => \App\Http\Middleware\SignatureMiddleware::class, //route に適応している
+        'transform.input' => \App\Http\Middleware\TransformInput::class, //controllerのconstructで使用している
     ];
 
     /**

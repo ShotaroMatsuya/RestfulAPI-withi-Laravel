@@ -56,6 +56,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    //middleware groups の 'web'はroutes/web.phpに適応される
     protected function mapWebRoutes()
     {
         Route::middleware('web')
@@ -70,6 +71,8 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    //middleware groups の 'api'はroutes/api.phpに適応される
+
     protected function mapApiRoutes()
     {
 
