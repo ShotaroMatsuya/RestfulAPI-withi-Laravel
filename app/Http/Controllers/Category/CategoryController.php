@@ -16,6 +16,8 @@ class CategoryController extends ApiController
     public function index()
     {
         $categories = Category::all();
+        //paginateメソッドはeloquent collectionに使えるメソッドでeloquent modelには使えない
+        // $categories = Category::paginate();
 
         return $this->showAll($categories);
     }
