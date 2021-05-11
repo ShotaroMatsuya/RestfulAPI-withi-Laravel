@@ -35,6 +35,7 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('passw
 // Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->name('verification.verify');
 // Route::post('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
+Route::get('/home/my-tokens', 'HomeController@getTokens')->name('personal-tokens');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', function () {

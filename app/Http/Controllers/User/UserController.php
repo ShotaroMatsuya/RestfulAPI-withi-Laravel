@@ -13,8 +13,8 @@ class UserController extends ApiController
 {
     public function __construct()
     {
-        parent::__construct();
-
+        $this->middleware('client.credentials')->only(['store', 'resend']);
+        $this->middleware('auth:api')->except(['store', 'resend', 'verify']);
         $this->middleware('transform.input:' . UserTransFormer::class)->only(['store', 'update']);
     }
     /**

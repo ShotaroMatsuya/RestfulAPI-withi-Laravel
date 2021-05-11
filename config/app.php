@@ -165,6 +165,8 @@ return [
         /*
          * Package Service Providers...
          */
+        //oath2 library
+        Laravel\Passport\PassportServiceProvider::class,
         //data formatting library
         Spatie\Fractal\FractalServiceProvider::class,
 

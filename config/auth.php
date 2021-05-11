@@ -42,7 +42,8 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
+            // 'driver' => 'token',
+            'driver' => 'passport', //laravel passportを使用
             'provider' => 'users',
             'hash' => false,
         ],

@@ -50,3 +50,7 @@ Route::resource('transactions.sellers', 'Transaction\TransactionSellerController
 Route::resource('users', 'User\UserController', ['except' => ['create', 'edit']]);
 Route::name('verify')->get('users/verify/{token}', 'User\UserController@verify');
 Route::name('resend')->get('users/{user}/resend', 'User\UserController@resend');
+
+
+//routeにthrottleミドルウェアが適応されていた場合overwriteが必要
+Route::post('oauth/token', '\Laravel\Passport\Http\Controllers\AccessTokenController@issueToken');
