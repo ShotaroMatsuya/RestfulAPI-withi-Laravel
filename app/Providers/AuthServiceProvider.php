@@ -30,8 +30,8 @@ class AuthServiceProvider extends ServiceProvider
         // Passport::routes(null, ['prefix' => 'api/oauth', 'namespace' => '\Laravel\Passport\Http\Controllers']);
         Passport::routes();
         Passport::tokensExpireIn(Carbon::now()->addMinutes(30)); //access-tokenの有効期限は30min
+        // Passport::tokensExpireIn(Carbon::now()->addSeconds(30));
         Passport::refreshTokensExpireIn(Carbon::now()->addDays(30)); //refresh-tokenの有効期限は30日
-
-        //
+        Passport::enableImplicitGrant();
     }
 }
