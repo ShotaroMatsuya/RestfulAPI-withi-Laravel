@@ -19,6 +19,8 @@ class BuyerSellerController extends ApiController
      */
     public function index(Buyer $buyer)
     {
+        $this->allowedAdminAction();
+
         //we need to use and nested relationship in the eager loading
         //productモデルのsellerカラムを取得
         // $sellers = $buyer->transactions()->with('product.seller')->get()->pluck('product.seller');

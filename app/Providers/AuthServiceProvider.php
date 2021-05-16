@@ -42,6 +42,11 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        //gateを定義
+        Gate::define('admin-action', function ($user) {
+            return $user->isAdmin();
+        });
+
         // Passport::routes(null, ['prefix' => 'api/oauth', 'namespace' => '\Laravel\Passport\Http\Controllers']);
         Passport::routes();
         Passport::tokensExpireIn(Carbon::now()->addMinutes(30)); //access-tokenの有効期限は30min

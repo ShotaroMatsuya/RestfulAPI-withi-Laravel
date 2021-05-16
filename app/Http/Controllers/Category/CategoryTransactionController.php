@@ -19,6 +19,8 @@ class CategoryTransactionController extends ApiController
      */
     public function index(Category $category)
     {
+        $this->allowedAdminAction();
+
         // 少なくとも１つのtransactionを持ったproductsが返ってくる(whereHasメソッド)
         $transactions = $category->products()
             ->whereHas('transactions')

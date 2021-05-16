@@ -38,6 +38,8 @@ class CategoryController extends ApiController
      */
     public function store(Request $request)
     {
+        $this->allowedAdminAction();
+
         $rules = [
             'name' => 'required',
             'description' => 'required'
@@ -70,6 +72,8 @@ class CategoryController extends ApiController
      */
     public function update(Request $request, Category $category)
     {
+        $this->allowedAdminAction();
+
         //fillメソッドで配列をセットすると一度にpropertyにattachできる　e.g: $flight->fill($request->all())->save();
         //only sending the name & the description , and not any other field that client sends
         $category->fill($request->only([
@@ -93,6 +97,8 @@ class CategoryController extends ApiController
      */
     public function destroy(Category $category)
     {
+        $this->allowedAdminAction();
+
         $category->delete(); //soft delete
         //表向きは削除されているがdbには残っている
         return $this->showOne($category);
