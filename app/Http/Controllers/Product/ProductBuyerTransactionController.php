@@ -19,6 +19,8 @@ class ProductBuyerTransactionController extends ApiController
 
         $this->middleware('transform.input:' . TransactionTransFormer::class)->only(['store']);
         $this->middleware('scope:purchase-product')->only(['store']);
+        $this->middleware('can:purchase,buyer')->only('store');
+        //access tokenを取得したクライアントのみが購入できる(storeメソッドを使用できる)
     }
     /**
      * Store a newly created resource in storage.

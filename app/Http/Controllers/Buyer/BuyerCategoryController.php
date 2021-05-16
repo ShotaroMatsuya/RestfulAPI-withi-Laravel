@@ -12,6 +12,8 @@ class BuyerCategoryController extends ApiController
     {
         parent::__construct();
         $this->middleware('scope:read-general')->only('index');
+        //policyクラスのviewメソッド（モデルはbuyer）
+        $this->middleware('can:view,buyer')->only('show');
     }
     /**
      * Display a listing of the resource.
